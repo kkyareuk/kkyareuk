@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>꺄륵의 개인홈 · 성향과 배려리스트</title>
 <meta name="description" content="꺄륵의 성향, 드림 배려리스트, 캐릭터 위키와 그림·글 아카이브.">
-<meta name="version" content="2.2.0">
+<meta name="version" content="2.3.0">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&amp;family=Cinzel:wght@400;500;600&amp;family=Great+Vibes&amp;family=Caveat:wght@500;600;700&amp;family=Nanum+Pen+Script&amp;family=Noto+Serif+KR:wght@300;400;500;600;700&amp;family=Noto+Sans+KR:wght@300;400;500&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'">
@@ -149,14 +149,15 @@ button{font-family:inherit;cursor:pointer;background:none;border:none;color:inhe
 .wiki-directory-heading p{font-size:13px;color:var(--muted)}
 .wiki-search{display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--line);padding:10px 0;min-width:240px;font-size:13px}
 .wiki-search input{font:inherit;background:none;border:0;min-width:0;width:100%;color:var(--text);padding:5px 0}
-.wiki-index{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 24px}
-.wiki-entry{min-width:0;position:relative;border-bottom:1px solid var(--line);padding-bottom:16px;cursor:pointer}
-.wiki-entry-image{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--surface);border-radius:3px}
+.wiki-index{display:grid;grid-template-columns:1fr;border-top:1px solid var(--line)}
+.wiki-entry{min-width:0;position:relative;display:grid;grid-template-columns:60px minmax(0,1fr);gap:18px;align-items:center;border-bottom:1px solid var(--line);padding:16px 12px;cursor:pointer}
+.wiki-entry:hover{background:var(--surface)}
+.wiki-entry-image{position:relative;width:60px;aspect-ratio:1;overflow:hidden;background:var(--surface);border:1px solid var(--line)}
 .wiki-entry-image .monogram{display:none}
 .wiki-entry-image .veil{display:none}
 .wiki-entry-image img{transition:transform .35s}
 .wiki-entry:hover .wiki-entry-image img{transform:scale(1.035)}
-.wiki-entry .cap{padding:14px 0 0}
+.wiki-entry .cap{padding:0}
 .wiki-entry .nm{font:500 19px var(--font-kr);display:flex;justify-content:space-between;align-items:center}
 .wiki-entry .nm::after{content:'↗';font:14px sans-serif;color:var(--muted)}
 .wiki-entry .wd{font-size:11px;color:var(--muted);margin-top:7px}
@@ -165,7 +166,7 @@ button{font-family:inherit;cursor:pointer;background:none;border:none;color:inhe
 body.viewonly .wiki-entry.coming{display:none}
 .wiki-empty{font-size:14px;color:var(--muted);padding:40px 0}
 .wiki-page{padding:30px max(24px,calc((100vw - 1120px)/2)) 60px}
-.wiki-heading{display:flex;gap:26px;align-items:center;border-bottom:1px solid var(--line);padding:10px 0 28px}
+.wiki-heading{display:flex;gap:18px;align-items:center;border-bottom:2px solid var(--gold-dim);padding:10px 0 22px}
 .wiki-portrait{position:relative;flex:0 0 100px;height:116px;border-radius:50px 50px 5px 5px;overflow:hidden;background:var(--surface)}
 .wiki-portrait .monogram,.wiki-portrait .veil{display:none}
 .wiki-portrait .img-edit{display:none}
@@ -174,22 +175,36 @@ body.editing .wiki-portrait .img-edit{display:block;position:absolute;bottom:0;z
 .wiki-title{font:500 clamp(26px,4vw,38px) var(--font-kr);letter-spacing:-.045em;color:var(--text);line-height:1.4}
 .wiki-subtitle{font-size:13px;color:var(--muted);line-height:1.8;margin-top:8px}
 .wiki-character-name{font-size:11px;letter-spacing:.12em;color:var(--muted);margin-bottom:5px}
-.wiki-layout{display:grid;grid-template-columns:150px minmax(0,1fr);gap:42px;padding-top:28px}
-.wiki-au{align-self:start;position:sticky;top:100px;display:flex;flex-direction:column;gap:5px}
+.wiki-layout{padding-top:24px}
+.wiki-au{display:flex;flex-wrap:wrap;align-items:center;gap:5px;border-bottom:1px solid var(--line);padding:12px 0}
 .wiki-au .au-head{padding:5px 10px 12px;color:var(--muted);font:11px 'Noto Sans KR',sans-serif;letter-spacing:.08em}
 .wiki-au-option{font-size:13px;text-align:left;padding:11px 12px;border-radius:3px;color:var(--muted);display:flex;gap:6px}
 .wiki-au-option.on{background:var(--surface);color:var(--text);font-weight:500}
 .wiki-au-option:hover{background:var(--surface)}
-.wiki-content{min-width:0}
-.wiki-tabs{display:flex;gap:24px;border-bottom:1px solid var(--line);margin:0 0 28px;overflow-x:auto;scrollbar-width:thin}
-.wiki-tabs button{font-size:13px;color:var(--muted);padding:10px 0 14px;white-space:nowrap;border-bottom:2px solid transparent}
-.wiki-tabs button.active{color:var(--text);border-bottom-color:var(--gold);font-weight:500}
+.wiki-content{min-width:0;display:flow-root}
+.wiki-toc{display:table;min-width:240px;max-width:100%;border:1px solid var(--line);background:var(--surface);padding:18px 24px;margin-bottom:28px;font-size:13px;line-height:2}
+.wiki-toc strong{display:block;font-size:15px;color:var(--text);margin-bottom:7px}
+.wiki-toc ol{padding-left:20px;color:var(--gold)}
+.wiki-toc a{color:var(--gold-bright);text-decoration:underline;text-underline-offset:3px}
+.wiki-document-section{display:flow-root;scroll-margin-top:92px;margin-bottom:40px;outline:none}
+.wiki-section-heading{font:600 23px var(--font-kr);border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:22px;line-height:1.6}
+.wiki-section-heading a{color:var(--gold);margin-right:12px}
+.wiki-infobox{float:right;width:310px;margin:0 0 28px 32px;border:1px solid var(--gold-dim);background:var(--surface);min-width:0;font-size:13px}
+.wiki-infobox-name{text-align:center;background:var(--surface-raised);padding:16px;font:600 23px var(--font-kr);border-bottom:1px solid var(--line)}
+.wiki-infobox .wiki-photo{border:0;box-shadow:none}
+.wiki-infobox .wiki-photo .ph{aspect-ratio:4/5}
+.wiki-infobox .wiki-photo-caption{padding:12px;border-bottom:1px solid var(--line)}
+.wiki-infobox table{width:100%;border-collapse:collapse;table-layout:fixed;line-height:1.8}
+.wiki-infobox caption{padding:10px;background:var(--surface-raised);font-weight:500;color:var(--gold-bright);border-bottom:1px solid var(--line)}
+.wiki-infobox-name small{font:12px 'Noto Sans KR',sans-serif;color:var(--muted)}
+.wiki-infobox th,.wiki-infobox td{border-bottom:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top;overflow-wrap:anywhere;position:relative}
+.wiki-infobox th{width:32%;background:var(--surface-raised);font-weight:500;color:var(--gold-bright)}
+.wiki-infobox td{color:var(--text)}
+.wiki-infobox .add-btn{margin:12px}
+.wiki-content .wiki-block{border-top:0;padding:12px 0}
 .wiki-block{position:relative;padding:22px 0;border-top:1px solid var(--line);min-width:0}
 .wiki-block+.wiki-block{margin-top:16px}
 .wiki-label{font-size:14px;font-weight:500;color:var(--text);line-height:1.7;margin-bottom:15px}
-.wiki-overview{display:grid;grid-template-columns:minmax(0,1fr) 220px;gap:32px;align-items:start}
-.wiki-overview .wiki-block{border-top:0;padding-top:0}
-.wiki-reference{min-width:0;position:relative}
 .wiki-photo{border:7px solid var(--line);position:relative;box-shadow:0 1px 3px #100d0b;cursor:pointer}
 .wiki-photo .ph{aspect-ratio:4/5;position:relative;overflow:hidden;background:var(--surface)}
 .wiki-photo img{width:100%;height:100%;object-fit:cover}
@@ -230,8 +245,8 @@ body.editing .wiki-portrait .img-edit{display:block;position:absolute;bottom:0;z
 .wiki-content .ost-row{grid-template-columns:1fr}
 .wiki-content .gallery-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
 .wiki-content .rel-hint{font-size:11px;color:var(--muted);margin-top:12px}
-@media(max-width:850px){.wiki-index{grid-template-columns:repeat(2,minmax(0,1fr))}.wiki-layout{grid-template-columns:1fr;gap:20px}.wiki-au{position:static;flex-direction:row;flex-wrap:wrap;align-items:center}.wiki-au .au-head{padding:8px 10px}.wiki-au-option{padding:8px 12px}.wiki-page{padding:24px 24px 50px}}
-@media(max-width:560px){.wiki-directory{padding:26px 20px 50px}.wiki-directory-heading{display:block}.wiki-directory h1{font-size:27px}.wiki-search{margin-top:22px}.wiki-index{gap:22px 16px}.wiki-entry .nm{font-size:17px}.wiki-entry-image{aspect-ratio:1}.wiki-page{padding:18px 18px 40px}.wiki-heading{gap:18px;padding-bottom:22px}.wiki-portrait{flex-basis:70px;height:84px}.wiki-title{font-size:25px}.wiki-tabs{gap:22px}.wiki-overview{grid-template-columns:1fr}.wiki-reference{max-width:210px;margin:0 auto}.wiki-relationships{grid-template-columns:1fr;gap:20px}.wiki-people{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));max-height:240px}.wiki-relation-detail{border-left:0;border-top:1px solid var(--line);padding:24px 0 0}.wiki-person{grid-template-columns:32px minmax(0,1fr);padding:10px 6px;gap:7px}.wiki-person-avatar{width:32px;height:32px}.wiki-content .stat-key{flex-basis:76px}.wiki-content .gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:850px){.wiki-infobox{width:270px;margin-left:22px}.wiki-page{padding:24px 24px 50px}.wiki-relationships{grid-template-columns:1fr;gap:20px}.wiki-relation-detail{border-left:0;padding-left:0}.wiki-people{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));max-height:240px}}
+@media(max-width:560px){.wiki-directory{padding:26px 20px 50px}.wiki-directory-heading{display:block}.wiki-directory h1{font-size:27px}.wiki-search{margin-top:22px}.wiki-entry{gap:14px;padding:14px 0}.wiki-entry .nm{font-size:17px}.wiki-page{padding:18px 18px 40px}.wiki-heading{gap:18px;padding-bottom:22px}.wiki-portrait{flex-basis:54px;height:64px}.wiki-title{font-size:27px}.wiki-layout{padding-top:20px}.wiki-infobox{float:none;width:100%;max-width:360px;margin:0 auto 26px}.wiki-content{width:100%}.wiki-toc{display:block;min-width:0}.wiki-section-heading{font-size:21px}.wiki-person{grid-template-columns:32px minmax(0,1fr);padding:10px 6px;gap:7px}.wiki-person-avatar{width:32px;height:32px}.wiki-content .stat-key{flex-basis:76px}.wiki-content .gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 /* ============ CHARACTERS (양피지) ============ */
 .parchment-page{position:relative;color:var(--parchment-ink);padding:64px 0 90px;
   background:radial-gradient(ellipse 80% 60% at 15% 0%, rgba(20,16,13,.14), transparent 60%),
@@ -279,8 +294,6 @@ body:not(.editing) .sec-insert.empty{display:none !important}
   background:radial-gradient(ellipse 70% 55% at 20% 15%, var(--ac-soft), transparent 55%),
   radial-gradient(ellipse 60% 60% at 85% 90%, var(--ac-soft), transparent 60%),
   linear-gradient(165deg,var(--surface),var(--surface) 45%,var(--surface-raised))}
-.tab-panel{display:none}
-.tab-panel.on{display:block;animation:fadeUp .4s ease both}
 
 /* --- 개요 --- */
 .big-quote{font-size:1.02rem;line-height:2;color:var(--text);margin-bottom:26px;letter-spacing:.02em}
@@ -1515,10 +1528,12 @@ body.viewonly .hero-import{display:none}
   </div></div>
   <section class="wiki-page" id="detailHero">
     <header class="wiki-heading"><div class="wiki-portrait" id="portraitCol"></div><div class="wiki-heading-copy"><p class="wiki-character-name" id="wikiCharacterName"></p><h1 class="wiki-title" id="dTitle"></h1><p class="wiki-subtitle" id="dSubtitle"></p></div></header>
-    <div class="wiki-layout"><aside class="wiki-au" id="auRail" aria-label="세계관 버전"></aside><div class="wiki-content" id="sheetCol">
-      <nav class="wiki-tabs" id="detailTabs" aria-label="캐릭터 기록"><button data-tab="t1" class="active" onclick="setTab('t1')">프로필</button><button data-tab="td" onclick="setTab('td')">외형·성격</button><button data-tab="t2" onclick="setTab('t2')">서사</button><button data-tab="t3" onclick="setTab('t3')">관계</button><button data-tab="t4" onclick="setTab('t4')">기록함</button></nav>
+    <nav class="wiki-au" id="auRail" aria-label="세계관 버전"></nav>
+    <div class="wiki-layout"><article class="wiki-content" id="sheetCol">
+      <aside class="wiki-infobox" id="wikiInfobox" aria-label="캐릭터 프로필"></aside>
+      <nav class="wiki-toc" id="detailTabs" aria-label="목차"><strong>목차</strong><ol><li><a href="#t1" onclick="event.preventDefault();setTab('t1')">개요</a></li><li><a href="#td" onclick="event.preventDefault();setTab('td')">외형 및 성격</a></li><li><a href="#t2" onclick="event.preventDefault();setTab('t2')">작중 행적</a></li><li><a href="#t3" onclick="event.preventDefault();setTab('t3')">인물 관계</a></li><li><a href="#t4" onclick="event.preventDefault();setTab('t4')">기타 및 기록</a></li></ol></nav>
       <div id="tabPanels"></div>
-    </div></div>
+    </article></div>
   </section>
   <nav class="detail-nav"><div class="container">
     <button onclick="stepChar(-1)">← 이전 캐릭터</button>
@@ -2432,8 +2447,8 @@ function renderDetail(){
       </button>`).join('') +
     `<button class="au-add-btn" onclick="addAu()">＋ AU 추가</button>`;
 
-  document.getElementById('dTitle').innerHTML = `<span${ed(A+'.title')}>${esc(au.title)||esc(ch.en||ch.name)+"'s Story"}</span>`;
-  document.getElementById('dSubtitle').innerHTML = `<span${ed(A+'.subtitle')}>${esc(au.subtitle)}</span>`;
+  document.getElementById('dTitle').textContent = ch.name + (curAu > 0 ? ' (' + au.label + ')' : '');
+  document.getElementById('dSubtitle').innerHTML = `<span${ed(A+'.title')}>${esc(au.title||ch.en)}</span> · <span${ed(A+'.subtitle')}>${esc(au.subtitle)}</span>`;
 
   const kv = (arr, base) => arr.map((r,j)=>`
     <div class="stat-row">
@@ -2442,25 +2457,21 @@ function renderDetail(){
       <button class="rm-btn" onclick="rmAt('${base}',${j})">×</button>
     </div>`).join('');
 
-  const t1 = `
-    ${editing || !/^[\s.…]*$/.test(au.quote||'') ? `<p class="big-quote"><span${ed(A+'.quote')}>${mdv(au.quote)||'…'}</span></p>` : ''}
-    <div class="wiki-overview">
-      <div class="wiki-block">
-        <div class="wiki-label">기본 설정</div>
-        <div class="stat-table">${kv(au.profile, A+'.profile')}</div>
-        <button class="add-btn" onclick="addAt('${A}.profile',{k:'항목',v:'내용'})">＋ 프로필 항목 추가</button>
-        <p class="edit-hint br-hint">칸 안에서 Enter를 누르면 줄이 바뀌어요 · **굵게** *기울임* 문법도 됩니다</p>
-      </div>
-      <div class="wiki-reference">
+  document.getElementById('wikiInfobox').innerHTML = `
+    <div class="wiki-infobox-name">${esc(ch.name)}<br><small>${esc(au.label)}</small></div>
         <div class="wiki-photo" onclick="${editing?'editOvPhoto()':(au.photo?'openOvView()':'')}">
           <div class="ph">${au.photo?`<img loading="lazy" decoding="async" src="${esc(au.photo)}" alt="${esc(ch.name)}" onerror="this.style.display='none'">`:faceHTML(ac,'', (ch.mono&&ch.mono.trim())||(ch.en||ch.name||'?')[0].toUpperCase(), '3rem')}</div>
           ${editing?'<span class="rf-hint">🖼 사진 넣기</span>':''}
           <div class="wiki-photo-caption"${ed(A+'.ovCap')} onclick="if(editing)event.stopPropagation()">${esc(au.ovCap||ch.name)}</div>
         </div>
         ${au.fullBody ? `<div class="wiki-fullbody" onclick="${editing?'editFullBody()':''}"><img loading="lazy" decoding="async" src="${esc(au.fullBody)}" alt="" onerror="this.parentNode.style.display='none'">${editing?'<span class="fb-x" onclick="event.stopPropagation();removeFullBody()">×</span>':''}</div>`
-          : (editing?`<button class="ov-fullbody-add" onclick="editFullBody()">＋ 전신 그림<br><small>폴라로이드에 겹쳐 붙여요</small></button>`:'')}
-      </div>
-    </div>
+          : (editing?`<button class="ov-fullbody-add" onclick="editFullBody()">＋ 전신 그림<br><small>프로필 아래 표시됩니다</small></button>`:'')}
+
+    <table><caption class="sr-only">${esc(ch.name)} 기본 정보</caption><tbody>${au.profile.map((row,index)=>`<tr><th scope="row"${ed(`${A}.profile.${index}.k`)}>${esc(row.k)}</th><td><span${ed(`${A}.profile.${index}.v`)}>${mdv(row.v)}</span><button class="rm-btn" onclick="rmAt('${A}.profile',${index})">×</button></td></tr>`).join('')}</tbody></table>
+    <button class="add-btn" onclick="addAt('${A}.profile',{k:'항목',v:'내용'})">＋ 프로필 항목 추가</button>`;
+
+  const t1 = `
+    ${editing || !/^[\s.…]*$/.test(au.quote||'') ? `<p class="big-quote"><span${ed(A+'.quote')}>${mdv(au.quote)||'…'}</span></p>` : ''}
     ${sectionInsertHTML(au, 'overview_0', A)}
     <div class="two-col">
       <div class="wiki-block words-card">
@@ -2492,7 +2503,6 @@ function renderDetail(){
     ${sectionInsertHTML(au, 'overview_2', A)}`;
 
   const td = `
-    <h3 class="jr-head">상세 정보</h3>
     <p class="jr-sub">외형과 성격, 이 인물을 이루는 작은 설정들.</p>
     ${au.details.map((d,j)=>`
     <div class="wiki-block dt-card">
@@ -2676,7 +2686,6 @@ function renderDetail(){
     </div>` : ''}`;
 
   const t3 = `
-    <h2 class="jr-head">관계 기록</h2>
     <p class="jr-sub">어떤 사람인지, 어떤 시간을 함께했는지.</p>
     ${relPeople}`;
 
@@ -2743,14 +2752,9 @@ function renderDetail(){
     </div>
     ${sectionInsertHTML(au, 'etc_2', A)}`;
 
-  document.getElementById('tabPanels').innerHTML = `
-    <div class="tab-panel ${curTab==='t1'?'on':''}" id="t1">${t1}</div>
-    <div class="tab-panel ${curTab==='td'?'on':''}" id="td">${td}</div>
-    <div class="tab-panel ${curTab==='t2'?'on':''}" id="t2">${t2}</div>
-    <div class="tab-panel ${curTab==='t3'?'on':''}" id="t3">${t3}</div>
-    <div class="tab-panel ${curTab==='t4'?'on':''}" id="t4">${t4}</div>`;
-  document.querySelectorAll('#detailTabs button').forEach(b =>
-    b.classList.toggle('active', b.dataset.tab === curTab));
+  const sections = [['t1','개요',t1],['td','외형 및 성격',td],['t2','작중 행적',t2],['t3','인물 관계',t3],['t4','기타 및 기록',t4]];
+  document.getElementById('tabPanels').innerHTML = sections.map(([id,title,body],index)=>
+    `<section class="wiki-document-section" id="${id}" tabindex="-1" aria-labelledby="${id}-heading"><h2 class="wiki-section-heading" id="${id}-heading"><a href="#${id}" onclick="event.preventDefault();setTab('${id}')" aria-label="${esc(title)} 문단으로 이동">${index+1}.</a>${esc(title)}</h2>${body}</section>`).join('');
 }
 
 // 각 탭의 카드 블록 끝에 소지품 사진을 스티커처럼 걸침 (절대좌표 X)
@@ -3108,7 +3112,7 @@ function stepChar(dir){
   const n = (i + dir + DATA.chars.length) % DATA.chars.length;
   openChar(DATA.chars[n].id);
 }
-function setTab(t){ collectEdits(); curTab = t; renderDetail(); }
+function setTab(t){ collectEdits(); curTab = t; const section = document.getElementById(t); if(section){ section.focus({preventScroll:true}); section.scrollIntoView({block:'start',behavior:'instant'}); } }
 function setAu(j){ collectEdits(); curAu = j; curRel = 0; renderDetail(); }
 function selRel(j){ collectEdits(); curRel = j; relDetView = 'info'; renderDetail(); document.querySelector('.wiki-person.active')?.focus({preventScroll:true}); }
 function setRelSet(idx){
